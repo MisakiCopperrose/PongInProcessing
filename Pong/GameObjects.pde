@@ -25,6 +25,18 @@ class Padle extends RectangleGameObject
 
         shapeWidth = width / 60;
         shapeHeight = height / 4;
+
+        velocity.y = 10;
+    }
+
+    void update()
+    {
+        super.update();
+
+        if (position.y <= 0 || position.y >= height - shapeHeight)
+        {
+            velocity.y = -velocity.y;
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 class SinglePlayer extends GameObjectList
 {
     Puck puck = new Puck();
-    Padle richtPadle = new Padle();
+    Padle rightPadle = new Padle();
     PlayerPadle player = new PlayerPadle();
 
     SinglePlayer()
@@ -16,9 +16,9 @@ class SinglePlayer extends GameObjectList
 
     private void setLeftPadle()
     {
-        richtPadle.position = new PVector(width / 20 ,0);
+        rightPadle.position = new PVector(width / 20 ,0);
 
-        addObject(richtPadle);
+        addObject(rightPadle);
     }
 
     private void setPlayerPadle()
