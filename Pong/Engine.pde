@@ -2,6 +2,7 @@ class InputHandler
 {
     void update()
     {
+        
     }
 }
 
@@ -9,7 +10,7 @@ class GameStateManager implements GameLoopObject
 {
     private HashMap<GameState, GameObjectList> gameStates = new HashMap<GameState, GameObjectList>();
 
-    private GameObjectList activeGameState;
+    public GameObjectList activeGameState;
 
     void handleInput(InputHandler inputHandler)
     {

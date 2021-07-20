@@ -6,7 +6,8 @@ enum GameState
     SINGLEPLAYER, SINGLEPLAYER_BOT, LOCAL_MULTIPLAYER, MENU_STATE
 } 
 
-void setup() {
+void setup() 
+{
     size(1920, 1080);
     frameRate(60);
     
@@ -31,7 +32,7 @@ void update()
 }
 
 void draw() {
-    background(0f, 0f, 0f, 255f);
+    background(0f);
     update();
 
     gameStateManager.draw();

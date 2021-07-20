@@ -4,24 +4,28 @@ abstract class ShapeGameObject extends GameObject
     PVector velocity = new PVector(0, 0);
     PVector acceleration = new PVector(0, 0);
     PVector center = new PVector(0, 0);
-
-    color shapeColor = color(255, 255, 255);
-
+    
+    color shapeColor = color(255f);
+    
+    float shapeWidth, shapeHeight;
+    
+    boolean centered = false;
+    
     ShapeGameObject(String id)
     {
         super(id);
     }
-
-    void move()
+    
+    final void move()
     {
         position.add(velocity);
     }
-
-    void accelerate()
+    
+    final void accelerate()
     {
         velocity.add(acceleration);
     }
-
+    
     @Override
     void handleInput(InputHandler inputHandler)
     {
@@ -37,45 +41,82 @@ abstract class ShapeGameObject extends GameObject
     @Override
     void draw()
     {
+        if (centered)
+        {
+            rectMode(CENTER);
+            ellipseMode(CENTER);
+        } else {
+            rectMode(CORNER);
+            ellipseMode(RADIUS);
+        }
+        
         fill(shapeColor);
     }
+}
 
-    @Override
+class EllipseGameObject extends ShapeGameObject
+{
+    EllipseGameObject(String id)
+    {
+        super(id);
+    }
+    
+    void update()
+    {
+        super.update();
+        
+        setCenter();
+    }
+    
+    void draw()
+    {
+        super.draw();
+        
+        ellipse(position.x, position.y, shapeWidth, shapeHeight);
+    }
+    
+    final void setCenter()
+    {
+        if (centered)
+        {
+            center = new PVector(shapeWidth / 2, shapeHeight / 2);
+        } else {
+            center = new PVector(shapeWidth, shapeHeight);
+        }
+    }
+    
     void reset()
     {
     }
 }
 
-class CircleGameObject extends ShapeGameObject
-{
-    float radius;
-
-    CircleGameObject(String id)
-    {
-        super(id);
-    }
-
-    void draw()
-    {
-        super.draw();
-
-        circle(position.x, position.y, radius);
-    }
-}
-
 class RectangleGameObject extends ShapeGameObject
 {
-    float width, height;
-
     RectangleGameObject(String id)
     {
         super(id);
     }
-
+    
+    void update()
+    {
+        super.update();
+        
+        setCenter();
+    }
+    
     void draw()
     {
         super.draw();
-
-        rect(position.x, position.y, width, height);
+        
+        rect(position.x, position.y, shapeWidth, shapeHeight);
+    }
+    
+    final void setCenter()
+    {
+        center = new PVector(shapeWidth / 2, shapeHeight / 2);
+    }
+    
+    void reset()
+    {
     }
 }
