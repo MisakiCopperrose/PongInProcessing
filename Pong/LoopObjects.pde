@@ -5,14 +5,13 @@ interface GameLoopObject
     void update();
     
     void draw();
+
+    void reset();
 }
 
 abstract class GameObject implements GameLoopObject
 {
     GameObject parent;
-    
-    PVector position;
-    PVector velocity;
     
     String id;
     
@@ -29,6 +28,9 @@ abstract class GameObject implements GameLoopObject
     
     @Override
     abstract void draw();
+
+    @Override
+    abstract void reset();
 }
 
 class GameObjectList extends GameObject
@@ -43,7 +45,8 @@ class GameObjectList extends GameObject
     @Override
     void handleInput(InputHandler inputHandler)
     {
-        for (GameLoopObject object : gameObjects) {
+        for (GameLoopObject object : gameObjects) 
+        {
             object.handleInput(inputHandler);
         }
     }
@@ -51,7 +54,8 @@ class GameObjectList extends GameObject
     @Override
     void update()
     {
-        for (GameLoopObject object : gameObjects) {
+        for (GameLoopObject object : gameObjects) 
+        {
             object.update();
         }
     }
@@ -59,19 +63,29 @@ class GameObjectList extends GameObject
     @Override
     void draw()
     {  
-        for (GameLoopObject object : gameObjects) {
+        for (GameLoopObject object : gameObjects) 
+        {
             object.draw();
         }
     }
+
+    @Override
+    void reset()
+    {
+        for (GameLoopObject object : gameObjects) 
+        {
+            object.reset();
+        }
+    }
     
-    void addObject(GameObject object)
+    final void addObject(GameObject object)
     {
         object.parent = this;
         
         gameObjects.add(object);
     }
     
-    void removeObject(GameObject object)
+    final void removeObject(GameObject object)
     {
         gameObjects.remove(object);
     }
