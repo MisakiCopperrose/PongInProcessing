@@ -1,21 +1,8 @@
-class InputHandler
-{
-    void update()
-    {
-        
-    }
-}
-
 class GameStateManager implements GameLoopObject
 {
     private HashMap<GameState, GameObjectList> gameStates = new HashMap<GameState, GameObjectList>();
 
     public GameObjectList activeGameState;
-
-    void handleInput(InputHandler inputHandler)
-    {
-        activeGameState.handleInput(inputHandler);
-    }
     
     void update()
     {

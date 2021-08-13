@@ -1,7 +1,5 @@
 interface GameLoopObject
 {
-    void handleInput(InputHandler inputHandler);
-    
     void update();
     
     void draw();
@@ -21,9 +19,6 @@ abstract class GameObject implements GameLoopObject
     }
     
     @Override
-    abstract void handleInput(InputHandler inputHandler);
-    
-    @Override
     abstract void update();
     
     @Override
@@ -40,15 +35,6 @@ class GameObjectList extends GameObject
     GameObjectList(String id)
     {
         super(id);
-    }
-    
-    @Override
-    void handleInput(InputHandler inputHandler)
-    {
-        for (GameLoopObject object : gameObjects) 
-        {
-            object.handleInput(inputHandler);
-        }
     }
     
     @Override

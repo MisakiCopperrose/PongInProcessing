@@ -1,2 +1,3 @@
 # PongInProcessing
-Small pong game with an engine test for lyceo interview
+
+Small pong game with an engine test for Lyceo interview

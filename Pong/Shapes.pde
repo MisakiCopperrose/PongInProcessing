@@ -27,11 +27,6 @@ abstract class ShapeGameObject extends GameObject
     }
     
     @Override
-    void handleInput(InputHandler inputHandler)
-    {
-    }
-    
-    @Override
     void update()
     {
         accelerate();
